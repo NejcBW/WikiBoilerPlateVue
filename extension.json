@@ -1,0 +1,67 @@
+{
+	"name": "BoilerPlate",
+	"author": [
+		"Your Name"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:BoilerPlate",
+	"descriptionmsg": "boilerplate-desc",
+	"license-name": "GPL-2.0-or-later",
+	"type": "specialpage",
+	"requires": {
+		"MediaWiki": ">= 1.35.0"
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\BoilerPlate\\": "src/"
+	},
+	"config": {
+		"BoilerPlateEnableFoo": {
+			"description": "Enable the Foo feature.",
+			"value": true
+		},
+		"BoilerPlateVandalizeEachPage": {
+			"description": "Write 'BoilerPlate was here' on each page",
+			"value": false
+		}
+	},
+	"SpecialPages": {
+		"IncludeBoiler": "MediaWiki\\Extension\\BoilerPlate\\SpecialIncludeBoiler",
+		"Boiler": "MediaWiki\\Extension\\BoilerPlate\\SpecialBoiler"
+	},
+	"HookHandlers": {
+		"BoilerPlateHooks": {
+			"class": "MediaWiki\\Extension\\BoilerPlate\\Hooks"
+		},
+		"BoilerPlateTags": {
+			"class": "MediaWiki\\Extension\\BoilerPlate\\Tags"
+		}
+	},
+	"Hooks": {
+		"BeforePageDisplay": [
+			"BoilerPlateHooks"
+		],
+		"ParserFirstCallInit": [
+			"BoilerPlateTags"
+		]
+	},
+	"MessagesDirs": {
+		"BoilerPlate": [
+			"i18n"
+		]
+	},
+	"ResourceModules": {
+		"ext.boilerPlate": {
+			"localBasePath": "resources/ext.boilerPlate",
+			"remoteExtPath": "BoilerPlate/resources/ext.boilerPlate",
+			"dependencies": [
+				"vue"
+			],
+			"styles": [],
+			"packageFiles": [
+				"init.js",
+				"App.vue"
+			],
+			"messages": []
+		}
+	},
+	"manifest_version": 2
+}
